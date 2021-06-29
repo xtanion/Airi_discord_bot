@@ -618,7 +618,7 @@ class Test(commands.Cog):
     @commands.command(aliases=['spotifyp', 'spp'])
     async def spotify_playlist_search(self, ctx, *, arg):
         spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(
-            client_id='854409f9458641bfa015c5fe8ebfb1e2', client_secret='79c4d1f14c8540629294eb6ed163e881'))
+            client_id='SPOTIFY_ID', client_secret='SPOTIFY_SECRET'))
         msg = await ctx.send(embed=discord.Embed(description=f"**Searching** - {arg} on Spotify", color=discord.Color.gold()))
         var = arg
         arg = arg.split(" ")
