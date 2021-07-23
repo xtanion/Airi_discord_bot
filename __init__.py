@@ -2,8 +2,19 @@ import discord,datetime,random,youtube_dl,os,asyncio
 from discord.ext import commands
 from discord.voice_client import VoiceClient
 import numpy as np
+import sqlite3
 
-client = commands.Bot(command_prefix='.')
+def get_prefix(bot,msg):
+    db = sqlite3.connect("Config.db")
+    cursor = db.cursor()
+    x = cursor.execute(f"SELECT prefix FROM config WHERE guild_id = {msg.guild.id}")
+    y = x.fetchone()
+    if y == None:
+        return commands.when_mentioned_or(".")(bot,msg)
+    else:
+        return commands.when_mentioned_or(y[0],".")(bot,msg)
+    
+client = commands.Bot(command_prefix=get_prefix)
 client.remove_command("help")
 
 @client.event
