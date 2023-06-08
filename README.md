@@ -11,3 +11,10 @@ Airi is a discord bot made by me in my Summer Vacations as a fun project!
   - Airi can show you what's going on in a subreddit, get recent posts, memes and wallpapers using reddit commands.
   - [ ] **& Many More**
   - just Explore 'em
+
+## Run locally
+
+Run the `init` file, bot should be up.
+```
+python3 __init__.py
+```
